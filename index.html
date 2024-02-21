@@ -1,1 +1,117 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<title>M+D Games Junior Event</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        background-color: #012f49; /* Adjusted to match the logo color */
+        color: white;
+        background-image: url('background_design.png'); /* Path to your background image */
+        background-size: cover; /* Cover the entire page */
+        background-position: center center; /* Center the image */
+        background-attachment: fixed; /* Fixed background */
+    }
+    .container {
+        position: relative;
+        height: 100%;
+    }
+    .heart {
+        width: 35%; /* Adjust size as needed */
+        position: absolute;
+        top: 12%;
+        left: 5%;
+        transform: translate(-50%, -50%);
+        animation: pump 2s infinite;
+    }
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .announcement {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        font-weight: 500;
+    }
+    .countdown {
+        font-size: 2rem;
+        margin-bottom: 50px; /* Space between countdown and button */
+    }
+    .register-btn {
+        background-color: #008CBA; /* Example: A nice blue */
+        font-weight: 600; /* Make the text on the button bold */
+        box-shadow: 0 4px #005f73;
+        color: white;
+        padding: 14px 25px;
+        font-size: 20px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    @keyframes pump {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="heart.png" alt="Beating Heart" class="heart">
+        <div class="content">
+            <div class="announcement">
+                Do otvorenia registrácie na <br> 
+                Medgames Junior 2024 <br>
+                zostáva len: 
+            </div>
+            <div id="countdown" class="countdown"></div>
+            <a href="https://forms.gle/j5QkFozME7bvUZic8" class="register-btn">Registrácia</a>
+        </div>
+    </div>
+
+<script>
+    // Set the date we're counting down to hello
+    var countDownDate = new Date("Feb 26, 2024 20:00:00").getTime();
+
+    // Update the count down every 1 second
+    var countdownFunction = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the time remaining until the countdown date
+        var timeLeft = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="countdown"
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the countdown is finished, write some text
+        if (timeLeft < 0) {
+            clearInterval(countdownFunction);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
